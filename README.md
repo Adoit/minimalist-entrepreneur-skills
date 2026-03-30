@@ -9,48 +9,66 @@ Adapted from [slavingia/skills](https://github.com/slavingia/skills) (Claude Cod
 Clone this repo into your project or home directory:
 
 ```bash
-# Project-level (skills available in this project only)
+# Project-level (skills + commands available in this project only)
 git clone https://github.com/Adoit/minimalist-entrepreneur-skills.git
-mkdir -p .opencode/skills
+mkdir -p .opencode/skills .opencode/commands
 cp -r minimalist-entrepreneur-skills/.opencode/skills/* .opencode/skills/
+cp -r minimalist-entrepreneur-skills/.opencode/commands/* .opencode/commands/
 
-# Or global (skills available in all projects)
-mkdir -p ~/.config/opencode/skills
+# Or global (skills + commands available in all projects)
+mkdir -p ~/.config/opencode/skills ~/.config/opencode/commands
 cp -r minimalist-entrepreneur-skills/.opencode/skills/* ~/.config/opencode/skills/
+cp -r minimalist-entrepreneur-skills/.opencode/commands/* ~/.config/opencode/commands/
 ```
 
-Or simply clone and work inside the repo -- OpenCode auto-discovers `.opencode/skills/*/SKILL.md` files.
+Or simply clone and work inside the repo -- OpenCode auto-discovers `.opencode/skills/*/SKILL.md` and `.opencode/commands/*.md` files.
 
 ## Skills
 
-| Skill | Description | Stage |
-|-------|-------------|-------|
-| `find-community` | Identify and evaluate communities to build a business around | Ideation |
-| `validate-idea` | Validate a business idea before building anything | Validation |
-| `processize` | Turn an idea into a manual-first process you can deliver today | Validation |
-| `mvp` | Build a minimum viable product -- manual first, then processized, then productized | Building |
-| `pricing` | Figure out pricing using minimalist entrepreneur principles | Monetization |
-| `first-customers` | Strategy for selling to your first 100 customers | Sales |
-| `marketing-plan` | Build an audience through content, not ads | Marketing |
-| `grow-sustainably` | Evaluate decisions for sustainable, profitable growth | Growth |
-| `company-values` | Define company values and culture | Culture |
-| `minimalist-review` | Gut-check any business decision through the minimalist lens | Evaluation |
+| Skill | Command | Description | Stage |
+|-------|---------|-------------|-------|
+| `find-community` | `/find-community` | Identify and evaluate communities to build a business around | Ideation |
+| `validate-idea` | `/validate-idea` | Validate a business idea before building anything | Validation |
+| `processize` | `/processize` | Turn an idea into a manual-first process you can deliver today | Validation |
+| `mvp` | `/mvp` | Build a minimum viable product -- manual first, then processized, then productized | Building |
+| `pricing` | `/pricing` | Figure out pricing using minimalist entrepreneur principles | Monetization |
+| `first-customers` | `/first-customers` | Strategy for selling to your first 100 customers | Sales |
+| `marketing-plan` | `/marketing-plan` | Build an audience through content, not ads | Marketing |
+| `grow-sustainably` | `/grow-sustainably` | Evaluate decisions for sustainable, profitable growth | Growth |
+| `company-values` | `/company-values` | Define company values and culture | Culture |
+| `minimalist-review` | `/minimalist-review` | Gut-check any business decision through the minimalist lens | Evaluation |
 
 ## Usage
 
-Once installed, OpenCode will list these skills in the `skill` tool description. The agent can load any skill on demand:
+### Slash Commands
+
+The quickest way to use these skills is via slash commands. Type `/` in the OpenCode TUI:
 
 ```
-skill({ name: "validate-idea" })
+/pricing my SaaS product for freelance designers
+/validate-idea a tool that helps podcasters find guests
+/minimalist-review should I hire a contractor or use no-code tools?
+/find-community
+/mvp
 ```
 
-Or you can ask the agent directly:
+Commands accept optional arguments. If you omit them, the agent will ask clarifying questions.
+
+### Natural Language
+
+You can also just ask naturally -- the agent will match your request to the right skill automatically:
 
 > "Help me validate my business idea using the minimalist entrepreneur framework"
 > "I need to figure out pricing for my SaaS product"
 > "Review my decision to hire two engineers through the minimalist entrepreneur lens"
 
-The agent will automatically match your request to the relevant skill.
+### Programmatic (skill tool)
+
+The agent can also load skills directly via the built-in `skill` tool:
+
+```
+skill({ name: "validate-idea" })
+```
 
 ## Suggested Journey
 
